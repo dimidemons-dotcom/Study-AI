@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyAI - Aprueba con tus Propios Apuntes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.8); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold gradient-text">📚 StudyAI</div>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-gray-700 hover:text-purple-600 transition">Características</a>
+                    <a href="#how-it-works" class="text-gray-700 hover:text-purple-600 transition">Cómo Funciona</a>
+                    <a href="#pricing" class="text-gray-700 hover:text-purple-600 transition">Precios</a>
+                </div>
+                <div class="flex space-x-4">
+                    <button class="text-purple-600 hover:text-purple-700 font-semibold">Iniciar Sesión</button>
+                    <button class="gradient-bg text-white px-6 py-2 rounded-lg hover:opacity-90 transition font-semibold">Empezar Gratis</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 gradient-bg text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+                        <span class="text-sm font-semibold">🚀 +12,000 estudiantes ya aprueban con IA</span>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                        Aprueba tus exámenes con tus propios apuntes
+                    </h1>
+                    <p class="text-xl mb-8 text-white/90">
+                        Sube tus PDFs, obtén resúmenes inteligentes, practica con exámenes generados por IA y aprueba a la primera. Simple, rápido, efectivo.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-white text-purple-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition pulse-glow">
+                            Probar Gratis Ahora
+                        </button>
+                        <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition">
+                            Ver Demo
+                        </button>
+                    </div>
+                    <div class="mt-8 flex items-center space-x-6 text-sm">
+                        <div class="flex items-center">
+                            <span class="text-yellow-300 mr-1">⭐⭐⭐⭐⭐</span>
+                            <span>4.9/5 (2,341 reseñas)</span>
+                        </div>
+                        <div>✅ No requiere tarjeta</div>
+                    </div>
+                </div>
+                <div class="hidden md:block animate-float">
+                    <div class="bg-white rounded-2xl shadow-2xl p-8">
+                        <div class="bg-purple-50 rounded-lg p-6 mb-4">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-gray-600 font-semibold">📄 Fotosíntesis.pdf</span>
+                                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">Procesando...</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-center text-gray-700">
+                                <span class="text-2xl mr-3">✅</span>
+                                <span>Resumen generado</span>
+                            </div>
+                            <div class="flex items-center text-gray-700">
+                                <span class="text-2xl mr-3">✅</span>
+                                <span>30 preguntas test creadas</span>
+                            </div>
+                            <div class="flex items-center text-gray-700">
+                                <span class="text-2xl mr-3">✅</span>
+                                <span>45 flashcards listas</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-bold gradient-text mb-2">87%</div>
+                    <div class="text-gray-600">Aprueban a la primera</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold gradient-text mb-2">12K+</div>
+                    <div class="text-gray-600">Estudiantes activos</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold gradient-text mb-2">45 min</div>
+                    <div class="text-gray-600">Ahorro promedio/día</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold gradient-text mb-2">+1.5</div>
+                    <div class="text-gray-600">Puntos de mejora media</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Todo lo que necesitas para aprobar</h2>
+                <p class="text-xl text-gray-600">Tecnología de IA diseñada específicamente para estudiantes</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-4xl mb-4">📝</div>
+                    <h3 class="text-2xl font-bold mb-3">Resúmenes Inteligentes</h3>
+                    <p class="text-gray-600 mb-4">Sube tus apuntes y obtén resúmenes en 3 niveles: ultra-rápido (2 min), estándar (15 min) o conceptos clave.</p>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li>✓ Preserva todo el contenido importante</li>
+                        <li>✓ Elimina información redundante</li>
+                        <li>✓ Destaca fórmulas y definiciones</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="text-2xl font-bold mb-3">Exámenes Personalizados</h3>
+                    <p class="text-gray-600 mb-4">Genera exámenes tipo test y preguntas de desarrollo basados en TUS apuntes.</p>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li>✓ Corrección automática con explicaciones</li>
+                        <li>✓ Identifica tus áreas débiles</li>
+                        <li>✓ Dificultad adaptativa</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-4xl mb-4">🔄</div>
+                    <h3 class="text-2xl font-bold mb-3">Repaso Espaciado</h3>
+                    <p class="text-gray-600 mb-4">Sistema científico de repetición que maximiza tu retención de memoria a largo plazo.</p>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li>✓ Flashcards automáticas</li>
+                        <li>✓ Recordatorios inteligentes</li>
+                        <li>✓ Basado en curva de olvido</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-4xl mb-4">💬</div>
+                    <h3 class="text-2xl font-bold mb-3">Chat con tus Apuntes</h3>
+                    <p class="text-gray-600 mb-4">Pregunta cualquier duda y obtén respuestas instantáneas basadas en tu material de estudio.</p>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li>✓ Respuestas en segundos</li>
+                        <li>✓ Cita páginas específicas</li>
+                        <li>✓ Explica conceptos complejos</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="text-2xl font-bold mb-3">Análisis de Progreso</h3>
+                    <p class="text-gray-600 mb-4">Visualiza tu evolución con estadísticas detalladas y predicciones de aprobado.</p>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li>✓ Dominio por temas (%)</li>
+                        <li>✓ Áreas a reforzar</li>
+                        <li>✓ Tiempo estimado hasta examen</li>
+                    </ul>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg card-hover">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="text-2xl font-bold mb-3">Rapidez Extrema</h3>
+                    <p class="text-gray-600 mb-4">Procesa documentos de hasta 100 páginas en menos de 60 segundos.</p>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li>✓ Soporta PDF, Word y texto</li>
+                        <li>✓ OCR para documentos escaneados</li>
+                        <li>✓ Disponible 24/7</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Cómo funciona en 3 pasos</h2>
+                <p class="text-xl text-gray-600">De apuntes caóticos a examen aprobado en minutos</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center text-3xl font-bold text-purple-600 mx-auto mb-6">1</div>
+                    <h3 class="text-2xl font-bold mb-4">Sube tus Apuntes</h3>
+                    <p class="text-gray-600">Arrastra tu PDF, Word o pega texto. Procesamos hasta 100 páginas en 60 segundos.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center text-3xl font-bold text-purple-600 mx-auto mb-6">2</div>
+                    <h3 class="text-2xl font-bold mb-4">Estudia Inteligente</h3>
+                    <p class="text-gray-600">Lee resúmenes, practica con flashcards, y haz exámenes personalizados generados por IA.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center text-3xl font-bold text-purple-600 mx-auto mb-6">3</div>
+                    <h3 class="text-2xl font-bold mb-4">Aprueba con Confianza</h3>
+                    <p class="text-gray-600">Simulacros cronometrados, análisis de áreas débiles y predicción de aprobado.</p>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <button class="gradient-bg text-white px-10 py-4 rounded-lg font-bold text-lg hover:opacity-90 transition shadow-xl">
+                    Empezar Ahora - Es Gratis
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="py-20 bg-purple-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Lo que dicen nuestros estudiantes</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center font-bold text-purple-700 mr-3">L</div>
+                        <div>
+                            <div class="font-bold">Laura M.</div>
+                            <div class="text-sm text-gray-600">Medicina, UAM</div>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-2">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-700">"Subí mi nota en Bioquímica de 5 a 8.5 en solo un mes. Los exámenes generados eran casi idénticos al real. Increíble."</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center font-bold text-purple-700 mr-3">C</div>
+                        <div>
+                            <div class="font-bold">Carlos R.</div>
+                            <div class="text-sm text-gray-600">Derecho, UCM</div>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-2">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-700">"El chat con IA me salvó antes del examen. Le hice 40 preguntas sobre mis dudas y todas fueron respondidas perfectamente."</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center font-bold text-purple-700 mr-3">M</div>
+                        <div>
+                            <div class="font-bold">María G.</div>
+                            <div class="text-sm text-gray-600">Ingeniería, UPM</div>
+                        </div>
+                    </div>
+                    <div class="text-yellow-400 mb-2">⭐⭐⭐⭐⭐</div>
+                    <p class="text-gray-700">"Ahorro 2 horas diarias. Los resúmenes son tan buenos que ya no necesito leer todo el temario. Aprobé todas en junio."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Planes que se adaptan a ti</h2>
+                <p class="text-xl text-gray-600">Empieza gratis, upgrade cuando lo necesites</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Free Plan -->
+                <div class="bg-white border-2 border-gray-200 rounded-2xl p-8">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Gratuito</h3>
+                        <div class="text-4xl font-bold mb-2">0€</div>
+                        <div class="text-gray-600">Para empezar</div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span>10 documentos/mes (30 pág)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span>Resúmenes ilimitados</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span>3 exámenes/día</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span>50 flashcards</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span>1 asignatura</span>
+                        </li>
+                    </ul>
+                    <button class="w-full border-2 border-purple-600 text-purple-600 py-3 rounded-lg font-semibold hover:bg-purple-50 transition">
+                        Empezar Gratis
+                    </button>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="bg-gradient-to-br from-purple-600 to-pink-600 text-white rounded-2xl p-8 shadow-2xl transform scale-105 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-purple-900 px-4 py-1 rounded-full text-sm font-bold">
+                        MÁS POPULAR
+                    </div>
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Premium</h3>
+                        <div class="text-4xl font-bold mb-2">9.99€</div>
+                        <div class="text-purple-100">por mes</div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <span class="text-yellow-300 mr-2">✓</span>
+                            <span>Documentos ilimitados (100 pág)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-yellow-300 mr-2">✓</span>
+                            <span>Exámenes ilimitados</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-yellow-300 mr-2">✓</span>
+                            <span>Chat con IA (10 preguntas/día)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-yellow-300 mr-2">✓</span>
+                            <span>500 flashcards</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-yellow-300 mr-2">✓</span>
+                            <span>5 asignaturas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-yellow-300 mr-2">✓</span>
+                            <span>Estadísticas avanzadas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-yellow-300 mr-2">✓</span>
+                            <span>Sin anuncios</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-white text-purple-600 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+                        Probar 7 Días Gratis
+                    </button>
+                    <p class="text-center text-sm mt-3 text-purple-100">No requiere tarjeta de crédito</p>
+                </div>
+
+                <!-- Student Plan -->
+                <div class="bg-white border-2 border-gray-200 rounded-2xl p-8">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-2">Estudiante</h3>
+                        <div class="text-4xl font-bold mb-2">6.99€</div>
+                        <div class="text-gray-600">por mes</div>
+                        <div class="text-sm text-purple-600 font-semibold mt-2">Con email .edu</div>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span>Todo de Premium</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span>30% descuento permanente</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span>Soporte prioritario</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2">✓</span>
+                            <span>Acceso beta a nuevas features</span>
+                        </li>
+                    </ul>
+                    <button class="w-full border-2 border-purple-600 text-purple-600 py-3 rounded-lg font-semibold hover:bg-purple-50 transition">
+                        Verificar Email .edu
+                    </button>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 text-gray-600">
+                <p>💳 Aceptamos tarjeta, PayPal y Bizum • 🔒 Cancela cuando quieras</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-20 gradient-bg text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">¿Listo para aprobar con IA?</h2>
+            <p class="text-xl mb-8 text-white/90">Únete a más de 12,000 estudiantes que ya estudian de forma más inteligente</p>
+            <button class="bg-white text-purple-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition shadow-xl mb-6">
+                Empezar Gratis - Sin Tarjeta
+            </button>
+            <div class="flex justify-center items-center space-x-8 text-sm">
+                <div>✓ Setup en 2 minutos</div>
+                <div>✓ Cancela cuando quieras</div>
+                <div>✓ Soporte 24/7</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="text-2xl font-bold text-white mb-4">📚 StudyAI</div>
+                    <p class="text-sm">La plataforma de estudio con IA más avanzada para estudiantes.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Producto</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white">Características</a></li>
+                        <li><a href="#" class="hover:text-white">Precios</a></li>
+                        <li><a href="#" class="hover:text-white">Casos de uso</a></li>
+                        <li><a href="#" class="hover:text-white">Demo</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Recursos</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white">Blog</a></li>
+                        <li><a href="#" class="hover:text-white">Guías de estudio</a></li>
+                        <li><a href="#" class="hover:text-white">Centro de ayuda</a></li>
+                        <li><a href="#" class="hover:text-white">API</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white">Privacidad</a></li>
+                        <li><a href="#" class="hover:text-white">Términos</a></li>
+                        <li><a href="#" class="hover:text-white">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-sm">
+                <p>&copy; 2026 StudyAI. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Email Capture -->
+    <div id="emailModal" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full relative animate-fadeIn">
+            <button onclick="closeEmailModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">×</button>
+            
+            <div class="text-center mb-6">
+                <div class="text-5xl mb-4">🎓</div>
+                <h3 class="text-2xl font-bold mb-2">¡Únete a StudyAI!</h3>
+                <p class="text-gray-600">Sé de los primeros en probar nuestra plataforma y recibe tips exclusivos de estudio con IA</p>
+            </div>
+
+            <form id="emailForm" class="space-y-4">
+                <div>
+                    <input 
+                        type="text" 
+                        id="userName"
+                        placeholder="Tu nombre" 
+                        required
+                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition"
+                    />
+                </div>
+                <div>
+                    <input 
+                        type="email" 
+                        id="userEmail"
+                        placeholder="tu@email.com" 
+                        required
+                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition"
+                    />
+                </div>
+                <div>
+                    <select 
+                        id="userProfile"
+                        class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition"
+                    >
+                        <option value="">¿Qué estudias?</option>
+                        <option value="universidad">Universidad</option>
+                        <option value="bachillerato">Bachillerato</option>
+                        <option value="oposiciones">Oposiciones</option>
+                        <option value="formacion">Formación Profesional</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                <button 
+                    type="submit"
+                    class="w-full gradient-bg text-white py-3 rounded-lg font-bold hover:opacity-90 transition"
+                >
+                    Quiero Acceso Anticipado 🚀
+                </button>
+                <p class="text-xs text-center text-gray-500">
+                    Al registrarte aceptas recibir emails con tips de estudio. Cancela cuando quieras.
+                </p>
+            </form>
+
+            <div id="successMessage" class="hidden text-center">
+                <div class="text-6xl mb-4">✅</div>
+                <h3 class="text-2xl font-bold mb-2 text-green-600">¡Bienvenido a StudyAI!</h3>
+                <p class="text-gray-600 mb-4">Te hemos enviado un email de confirmación. Revisa tu bandeja de entrada.</p>
+                <button onclick="closeEmailModal()" class="gradient-bg text-white px-6 py-2 rounded-lg font-semibold">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mostrar modal automáticamente después de 5 segundos
+        setTimeout(() => {
+            document.getElementById('emailModal').classList.remove('hidden');
+        }, 5000);
+
+        // Mostrar modal al hacer clic en botones CTA
+        document.querySelectorAll('button').forEach(btn => {
+            if (btn.textContent.includes('Empezar') || btn.textContent.includes('Probar')) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.getElementById('emailModal').classList.remove('hidden');
+                });
+            }
+        });
+
+        function closeEmailModal() {
+            document.getElementById('emailModal').classList.add('hidden');
+        }
+
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('emailModal').addEventListener('click', (e) => {
+            if (e.target.id === 'emailModal') {
+                closeEmailModal();
+            }
+        });
+
+        // Manejo del formulario
+        document.getElementById('emailForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const profile = document.getElementById('userProfile').value;
+
+            // Aquí conectarás con tu servicio de email (explicado más abajo)
+            console.log('Datos capturados:', { name, email, profile });
+
+            // Simular envío (reemplazar con llamada real a API)
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            // Mostrar mensaje de éxito
+            document.getElementById('emailForm').classList.add('hidden');
+            document.getElementById('successMessage').classList.remove('hidden');
+
+            // Guardar en localStorage para no molestar al usuario de nuevo
+            localStorage.setItem('studyai_registered', 'true');
+        });
+
+        // No mostrar modal si ya se registró
+        if (localStorage.getItem('studyai_registered')) {
+            clearTimeout();
+        }
+
+        // Animación de fade-in
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: scale(0.9); }
+                to { opacity: 1; transform: scale(1); }
+            }
+            .animate-fadeIn {
+                animation: fadeIn 0.3s ease-out;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
